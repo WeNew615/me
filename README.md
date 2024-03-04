@@ -1,3 +1,15 @@
+## Dependencies
+This project relies on the following external libraries:
+
+- [Bootstrap](https://getbootstrap.com/): A front-end framework for building responsive and mobile-first websites.
+
+To install Bootstrap, you can include the following `<link>` tag in the `<head>` section of your HTML file:
+
+```html
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
 My Web Development Project
 Overview
 This project is a simple web development project aimed at practicing HTML, CSS, and JavaScript skills. It consists of a basic static website with an index page, style sheet, and optional JavaScript functionality.
