@@ -3,12 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Development Project</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Web Development Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        .calculator, .crypto-feed, .about-me {
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .calculator h2, .crypto-feed h2, .about-me h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .frame {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .crypto-feed {
+            background-color: #f2f2f2;
+            border-radius: 5px;
+        }
+
+        .crypto-feed .card {
+            border: none;
+            background-color: transparent;
+        }
+
+        .crypto-feed .card-header {
+            background-color: #fff;
+            border-bottom: 1px solid #ced4da;
+        }
+
+        .crypto-feed .card-body {
+            padding: 0;
+        }
+
+        .about-me {
+            margin-top: 40px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .calculator table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .calculator table td, .calculator table th {
+            border: 1px solid #ced4da;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .calculator table th {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .calculator table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .calculator table tr:hover {
+            background-color: #ddd;
+        }
+
+        .screen {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 8px;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Web Development Project</h1>
-    <p>This is a simple static website for practicing web development.</p>
-    <script src="script.js"></script>
+    <div class="container">
+        <div class="row" style="margin-bottom: 12px;">
+            <div class="col-md-6">
+                <div class="calculator">
+                    <h2>Calculator</h2>
+                    <div class="screen" id="calc-screen">0</div>
+                    <table id="calc-table">
+                        <tr>
+                            <th colspan="4">Calculator</th>
+                        </tr>
+                        <tr>
+                            <td onclick="appendToScreen('7')">7</td>
+                            <td onclick="appendToScreen('8')">8</td>
+                            <td onclick="appendToScreen('9')">9</td>
+                            <td onclick="appendToScreen('/')">/</td>
+                        </tr>
+                        <tr>
+                            <td onclick="appendToScreen('4')">4</td>
+                            <td onclick="appendToScreen('5')">5</td>
+                            <td onclick="appendToScreen('6')">6</td>
+                            <td onclick="appendToScreen('*')">*</td>
+                        </tr>
+                        <tr>
+                            <td onclick="appendToScreen('1')">1</td>
+                            <td onclick="appendToScreen('2')">2</td>
+                            <td onclick="appendToScreen('3')">3</td>
+                            <td onclick="appendToScreen('-')">-</td>
+                        </tr>
+                        <tr>
+                            <td onclick="appendToScreen('0')">0</td>
+                            <td onclick="appendToScreen('.')">.</td>
+                            <td onclick="clearScreen()">C</td>
+                            <td onclick="appendToScreen('+')">+</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td onclick="calculate()">=</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="frame">
+                    <div class="crypto-feed">
+                        <h2>Crypto Trading Feed</h2>
+                        <div class="card">
+                            <div class="card-header">
+                                Crypto Prices
+                            </div>
+                            <div class="card-body" id="crypto-feed">
+                                <!-- Placeholder for crypto trading feed -->
+                                <p class="card-text">Loading crypto trading feed...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="about-me">
+                    <h2>About Me</h2>
+                    <p>Welcome to my web development project! I'm a newbie developer excited to share my work with the world. This project is still a work in progress, and I'm open to feedback, reviews, and mentoring from experienced developers. Feel free to explore the calculator and crypto trading feed sections, and don't hesitate to reach out with any suggestions or corrections!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let screen = document.getElementById('calc-screen');
+
+        function appendToScreen(value) {
+            if (screen.textContent === '0') {
+                screen.textContent = value;
+            } else {
+                screen.textContent += value;
+            }
+        }
+
+        function clearScreen() {
+            screen.textContent = '0';
+        }
+
+        function calculate() {
+            try {
+                screen.textContent = eval(screen.textContent).toFixed(2);
+            } catch (error) {
+                screen.textContent = 'Error';
+            }
+        }
+    </script>
 </body>
 </html>
